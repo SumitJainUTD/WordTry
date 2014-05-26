@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="15dp"
+        android:textSize="20dp"
+        android:text="@string/Test_Setting" />
+    
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="65dp"
+        android:textSize="20dp"
+        android:text="Choose The List" />
+    
+    <Spinner
+        android:id="@+id/Choose_List" 
+        android:layout_width="fill_parent"
+        android:gravity="center"
+         android:paddingTop="20dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/List_Names"
+        />
+    
+     <TextView
+        android:id="@+id/WordAvailable"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="5dp"
+        android:textSize="20dp"
+        android:text="Words Available: " />
+    
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="5dp"
+        android:textSize="20dp"
+        android:text="Choose the Order" />
+    
+    
+    
+    <RadioGroup 
+        android:id="@+id/Sequence"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:orientation="horizontal"
+        >
+        <RadioButton 
+         android:id="@+id/Random"   
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:onClick="onClickRadioButton"
+         android:checked="true"
+         android:text="Random"   />
+        
+        <RadioButton 
+         android:id="@+id/Ordered"   
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:onClick="onClickRadioButton"
+         android:text="Ordered"   />
+        
+    </RadioGroup>
+    
+    
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"                   
+        
+        android:text="@string/Continue"
+        android:onClick="ShowTest" />
+    
+
+</LinearLayout>

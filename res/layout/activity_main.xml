@@ -1,0 +1,88 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/MainPage_Heading" />
+
+    <Button
+        android:id="@+id/MainList"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+       
+        android:layout_below="@+id/textView1"        
+        android:layout_marginTop="15dp"
+        android:text="@string/Main_List"
+        android:onClick="ShowMasterList" />
+
+    <Button
+        android:id="@+id/MyList"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="60dp"
+        android:onClick="ShowMyList"
+        android:text="@string/My_List" />
+    
+    <Button
+        android:id="@+id/LearningList"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"        
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="104dp"
+        android:layout_below="@+id/textView1"
+        android:onClick="ShowLearningList"
+        android:text="@string/Learning_List" />
+
+    <Button
+        android:id="@+id/Test"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"        
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="148dp"
+        android:layout_below="@+id/textView1"
+        android:onClick="ShowTestSetting"
+        android:text="@string/Test" />
+    
+    
+    
+    <Button
+        android:id="@+id/Exam"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"        
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="192dp"
+        android:layout_below="@+id/textView1"
+        android:onClick="ShowExamSetting"
+        android:text="@string/Exam" />
+    <Button
+        android:id="@+id/ToughList"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"        
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="236dp"
+        android:layout_below="@+id/textView1"
+        android:onClick="ShowToughList"
+        android:text="@string/Tough_List" />
+    <Button
+        android:id="@+id/Stats"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"        
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="280dp"
+        android:layout_below="@+id/textView1"
+        android:onClick="ShowStats"
+        android:text="@string/Statistics" />
+
+</RelativeLayout>
