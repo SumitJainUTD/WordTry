@@ -108,6 +108,7 @@ public class WordAdapter extends CursorAdapter {
 //	    	Log.i("height", String.valueOf(ch[1].getHeight()));
 	    
 	    TextView Counter = (TextView) view.findViewById(R.id.CBCounter_view);
+	    
 		Counter.setText(String.valueOf(cursor.getInt(0)));
 	}
 

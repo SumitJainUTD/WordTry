@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -154,8 +156,18 @@ public class MainList extends Activity {
 					long id) {
 				// TODO Auto-generated method stub
 				//Toast.makeText(this, "yessss", "LENGTH_SHORT").show();
-				LinearLayout temp = (LinearLayout)itemClicked;
-				TextView tvp = (TextView)temp.getChildAt(0);
+				//LinearLayout temp = (LinearLayout)itemClicked;
+				//TableLayout temp = (TableLayout)itemClicked;
+				Log.i("com.example.wordtry.checkPoint","2606_1244");
+				TableLayout temp = (TableLayout)itemClicked;
+				int x = temp.getChildCount();
+				Log.i("com.example.wordtry.ChildCount",String.valueOf(x));
+				TableRow tr = (TableRow) temp.getChildAt(0);
+				Log.i("com.example.wordtry.RowChildCount",String.valueOf(tr.getChildCount()));
+				TextView tvp = (TextView)tr.getChildAt(0);
+				Log.i("com.example.wordtry.CheckPoint","2606_1254");
+				//TableRow tvp = (TableRow)temp.getChildAt(0);
+				//tvp.get
 				String strClickedWord = tvp.getText().toString();
 				Log.i("com.example.wordtry",strClickedWord);
 				Cursor csr = wp.getAllWords("Select * from mainwordlist where Word = '"+ strClickedWord+"'");
