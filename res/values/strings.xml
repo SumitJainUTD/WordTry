@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Word Power</string>
+    <string name="action_settings">Settings</string>
+    <string name="MainPage_Heading">Word Power</string>
+    <string name="Main_List">Main List</string>
+    <string name="My_List">My List</string>
+    <string name="Learning_List">Learning List</string>
+    <string name="Tough_List">Tough List</string>
+    <string name="Test_Setting">Test Setting</string>
+    <string name="Exam_Setting">Exam Setting</string>
+    <string name="Choose_List">Please Select</string>
+    <string name="Test">Test</string>
+    <string name="Exam">Exam</string>
+    <string name="Create_Exam">Create Exam</string>
+    <string name="Statistics">Statistics</string>
+    <string-array name="List_Names">
+        <item >Main List</item>
+        <item >My List</item>
+        <item >Learning List</item>
+        <item >Tough List</item>
+    </string-array>
+    <string name="Continue">Continue</string>
+
+</resources>

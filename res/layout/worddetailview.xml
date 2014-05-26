@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    
+    <LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:background="#FF8D8D8D"
+	    android:layout_marginTop="5dp"
+	    android:padding="5dp"
+	    android:layout_gravity="center_horizontal"
+	    android:layout_weight="0" >
+	    <Button android:text="Previous"
+	        android:onClick="PreviousWord"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:layout_gravity="center" />
+	    <Button android:text="Next"
+	        android:onClick="NextWord"
+	        android:layout_width="wrap_content"
+	        
+	        android:layout_weight="1"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center" />
+	  
+	    
+	</LinearLayout>
+    
+	   <ScrollView 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="1" >
+	    
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:orientation="vertical" >
+	
+	        <TextView
+	            android:id="@+id/wordDetail_View"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_marginTop="25dp"
+	            android:paddingBottom="5sp"
+	            android:paddingLeft="3sp"
+	            android:text="Sumir"
+	            android:textSize="40sp" />
+	
+	        <TextView
+	            android:id="@+id/meaningDetail_View"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_marginTop="40dp"
+	            android:layout_weight="0.49"
+	            android:paddingBottom="5sp"
+	            android:paddingLeft="3sp"
+	            android:text="Sumir"
+	            android:textSize="24sp" />
+	
+	        <TextView
+	            android:id="@+id/sentenceDetail_View"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_marginTop="40dp"
+	            android:paddingBottom="5sp"
+	            android:paddingLeft="3sp"
+	            android:text="Sumir"
+	            android:textSize="20sp" />
+	    </LinearLayout>
+	
+	</ScrollView>
+	
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:background="#FF8D8D8D"
+	    android:layout_marginTop="5dp"
+	    android:padding="5dp"
+	    android:layout_gravity="center_horizontal"
+	    android:layout_weight="0" >
+	    <Button android:text="Add To List"
+	        android:onClick="displayListMenuAdd"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	        android:layout_weight="1"
+	        android:id = "@+id/AddToList" />
+	    <Button android:text="Remove From List"
+	        android:onClick="displayListMenuRemove"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	         android:layout_weight="1"
+	        android:id = "@+id/RemoveFromList"
+	        />
+	    
+	</LinearLayout>
+	
+	
+	
+</LinearLayout>

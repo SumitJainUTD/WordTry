@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+     <group android:checkableBehavior="none">
+        <item android:id="@+id/MyList"
+              android:title="@string/My_List" />
+        <item android:id="@+id/LearningList"
+              android:title="@string/Learning_List" />
+        <item android:id="@+id/ToughList"
+              android:title="@string/Tough_List" />        
+    </group>
+    
+
+</menu>
