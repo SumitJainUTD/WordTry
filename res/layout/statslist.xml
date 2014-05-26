@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    
+    <LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:background="#FF8D8D8D"
+	    android:layout_marginTop="5dp"
+	    android:padding="5dp"
+	    android:layout_gravity="center_horizontal"
+	    android:layout_weight="0" >
+	    <TextView android:id="@+id/ListName"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	       	android:paddingLeft="3sp"
+	        android:textSize="12sp"
+	        android:text="List"
+	        android:layout_weight="1"
+	        android:paddingBottom="5sp"/>
+    
+		    <TextView android:id="@+id/Date"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:textSize="10sp"
+		        android:layout_marginLeft="5sp"
+		        android:paddingBottom="5sp"
+		        android:text="Date"
+		        android:layout_weight="1"
+		        android:paddingLeft="3sp"/>  
+		        
+		     <TextView android:id="@+id/NoOfQuestion"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:textSize="12sp"
+		        android:layout_marginLeft="5sp"
+		        android:paddingBottom="5sp"
+		        android:text="Ques"
+		        android:layout_weight="1"
+		        android:paddingLeft="3sp"/> 
+		        
+		      <TextView android:id="@+id/TotalMarks"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:textSize="12sp"
+		        android:layout_marginLeft="5sp"
+		        android:paddingBottom="5sp"
+		        android:text="Marks"
+		        android:layout_weight="1"
+		        android:paddingLeft="3sp"/>  
+		        
+		     <TextView android:id="@+id/Correct"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:textSize="12sp"
+		        android:layout_marginLeft="5sp"
+		        android:paddingBottom="5sp"
+		        android:text="Earned"
+		        android:layout_weight="1"
+		        android:paddingLeft="3sp"/>  
+		        
+		      <TextView android:id="@+id/PercentageScore"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:textSize="12sp"
+		        android:layout_marginLeft="5sp"
+		        android:paddingBottom="5sp"
+		        android:text="%"
+		        android:layout_weight="1"
+		        android:paddingLeft="3sp"/>  
+	  
+	    
+	</LinearLayout>
+
+	<ListView 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:id="@+id/stats_list" >
+
+	</ListView>
+	
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:background="#FF8D8D8D"
+	    android:layout_marginTop="5dp"
+	    android:padding="5dp"
+	    android:layout_gravity="center_horizontal"
+	    android:layout_weight="0" >
+	    <Button android:text="Clear Stats"
+	        android:onClick="ClearStats"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	        android:layout_weight="1"
+	        android:id = "@+id/ClearStats" />	    
+	    
+	</LinearLayout>
+	
+	
+</LinearLayout>

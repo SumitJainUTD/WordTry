@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="90sp"
+    android:orientation="horizontal">
+    
+    <TextView android:id="@+id/ListName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+       	android:paddingLeft="3sp"
+        android:textSize="12sp"
+        android:text="My List"
+        android:layout_weight="1"
+        android:paddingBottom="5sp"/>
+    
+    <TextView android:id="@+id/Date"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:layout_marginLeft="5sp"
+        android:paddingBottom="5sp"
+        android:text="12/06/84"
+        android:layout_weight="1"
+        android:paddingLeft="3sp"/>  
+        
+     <TextView android:id="@+id/NoOfQuestion"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_marginLeft="5sp"
+        android:paddingBottom="5sp"
+        android:text="4444"
+        android:layout_weight="1"
+        android:paddingLeft="3sp"/> 
+        
+      <TextView android:id="@+id/TotalMarks"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_marginLeft="5sp"
+        android:paddingBottom="5sp"
+        android:text="4444"
+        android:layout_weight="1"
+        android:paddingLeft="3sp"/>  
+        
+     <TextView android:id="@+id/Correct"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_marginLeft="5sp"
+        android:paddingBottom="5sp"
+        android:text="4444"
+        android:layout_weight="1"
+        android:paddingLeft="3sp"/>  
+        
+      <TextView android:id="@+id/PercentageScore"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_marginLeft="5sp"
+        android:paddingBottom="5sp"
+        android:text="95%"
+        android:layout_weight="1"
+        android:paddingLeft="3sp"/>  
+
+</LinearLayout>

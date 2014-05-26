@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:stretchColumns="*"
+    android:shrinkColumns="*" >
+    
+    <TableRow 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+        <Button
+        android:id="@+id/A_List"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="A"
+        android:padding="10dp"
+        android:onClick="ShowList_A"
+        android:layout_centerVertical="true"
+         />
+        
+         <Button
+        android:id="@+id/B_List"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="B"
+        android:padding="10dp"
+        android:layout_centerVertical="true"
+        
+        android:onClick="ShowList_B" />
+         
+          <Button
+        android:id="@+id/Button01"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:padding="10dp"
+        android:layout_height="wrap_content"
+        android:text="C"
+        android:onClick="ShowList_C" />
+          
+           <Button
+        android:id="@+id/Button01"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="D" 
+        android:onClick="ShowList_D"/>
+           
+          <Button
+        android:id="@+id/Button01"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="E"
+        android:onClick="ShowList_E" />
+       
+           
+        
+    </TableRow>
+    
+    <TableRow 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+        <Button
+        android:id="@+id/Button01"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="F" 
+        android:onClick="ShowList_F"/>
+        
+         <Button
+        android:id="@+id/Button01"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="G" 
+        android:onClick="ShowList_G"/>
+         
+          <Button
+        android:id="@+id/Button01"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="fill_parent"
+        android:padding="10dp"
+        android:layout_height="wrap_content"
+        android:text="H"
+        android:onClick="ShowList_H" />
+          
+           <Button
+        android:id="@+id/Button01"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="I"
+        android:onClick="ShowList_I" />
+           
+          <Button
+        android:id="@+id/Button01"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="J"
+        android:onClick="ShowList_J" />
+       
+           
+        
+    </TableRow>
+	<TableRow 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+        <Button
+        android:id="@+id/Button01"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="K"
+        android:onClick="ShowList_K" />
+        
+         <Button
+        android:id="@+id/Button01"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="L"
+        android:onClick="ShowList_L" />
+         
+          <Button
+        android:id="@+id/Button01"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="fill_parent"
+        android:padding="10dp"
+        android:layout_height="wrap_content"
+        android:text="M"
+        android:onClick="ShowList_M" />
+          
+           <Button
+        android:id="@+id/Button01"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="N"
+        android:onClick="ShowList_N" />
+           
+          <Button
+        android:id="@+id/Button01"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="O"
+        android:onClick="ShowList_O" />
+       
+           
+        
+    </TableRow>
+    <TableRow 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+        <Button
+        android:id="@+id/Button01"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="P"
+        android:onClick="ShowList_P" />
+        
+         <Button
+        android:id="@+id/Button01"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Q"
+        android:onClick="ShowList_Q" />
+         
+          <Button
+        android:id="@+id/Button01"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="fill_parent"
+        android:padding="10dp"
+        android:layout_height="wrap_content"
+        android:text="R"
+        android:onClick="ShowList_R" />
+          
+           <Button
+        android:id="@+id/Button01"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="S"
+        android:onClick="ShowList_S" />
+           
+          <Button
+        android:id="@+id/Button01"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="T"
+        android:onClick="ShowList_T" />
+       
+           
+        
+    </TableRow>
+	
+    <TableRow 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+        <Button
+        android:id="@+id/Button01"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="U"
+        android:onClick="ShowList_U" />
+        
+         <Button
+        android:id="@+id/Button01"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="V"
+        android:onClick="ShowList_V" />
+         
+          <Button
+        android:id="@+id/Button01"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="fill_parent"
+        android:padding="10dp"
+        android:layout_height="wrap_content"
+        android:text="W"
+        android:onClick="ShowList_W" />
+          
+           <Button
+        android:id="@+id/Button01"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="X"
+        android:onClick="ShowList_X" />
+           
+          <Button
+        android:id="@+id/Button01"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Y"
+        android:onClick="ShowList_Y" />
+       
+           
+        
+    </TableRow>
+    
+    <TableRow 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+        <Button
+        android:id="@+id/Button01"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+       
+        android:text="Z"
+        android:onClick="ShowList_Z" />
+        
+          
+           
+        
+    </TableRow>
+    
+    
+</TableLayout>

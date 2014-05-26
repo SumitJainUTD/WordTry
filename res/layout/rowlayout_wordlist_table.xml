@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <TableRow 
+        android:id="@+id/tablerow1"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content" >
+    	
+        <TextView android:id="@+id/word_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       	android:paddingLeft="3sp"
+        android:textSize="22sp"
+        android:text="Word"
+        android:paddingBottom="5sp"/>
+        
+        
+        
+        <TextView android:id="@+id/CBCounter_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="5"
+        android:layout_marginLeft="5sp"
+        android:paddingBottom="5sp"
+        android:paddingLeft="3sp"/>
+        
+        </TableRow>
+        
+    <TableRow >
+        <TextView android:id="@+id/meaning_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="Maining"
+        android:layout_marginLeft="5sp"
+        android:paddingBottom="5sp"
+        android:paddingLeft="3sp"/>
+    </TableRow>
+	
+
+</TableLayout>

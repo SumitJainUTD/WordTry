@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="90sp"
+    android:orientation="vertical"
+    android:id="@+id/my_activity_view"
+    android:tag="abcd">
+    
+     
+    
+    <TextView android:id="@+id/word_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       	android:paddingLeft="3sp"
+        android:textSize="22sp"
+        android:text="Word"
+        android:paddingBottom="5sp"/>
+    
+    <TextView android:id="@+id/meaning_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="Maining"
+        android:layout_marginLeft="5sp"
+        android:paddingBottom="5sp"
+        android:paddingLeft="3sp"/>
+	
+    
+	<TextView android:id="@+id/CBCounter_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="5"
+        android:layout_marginLeft="5sp"
+        android:paddingBottom="5sp"
+        android:paddingLeft="3sp"/>
+	
+   
+    
+</LinearLayout>
