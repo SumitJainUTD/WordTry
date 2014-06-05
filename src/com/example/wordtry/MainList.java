@@ -1,5 +1,7 @@
 package com.example.wordtry;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -12,6 +14,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TableLayout;
@@ -30,8 +34,10 @@ public class MainList extends Activity {
 	public WordPowerOpenHelper wp;
 	public String strListName;
 	public String strQuery;
-	public ListView listview;
+	public static ListView listview;
+	public CheckBox chkBx;
 	public CommomFunctions cf;
+	
 
 	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +46,8 @@ public class MainList extends Activity {
 		setContentView(R.layout.mainlist);
 		
 		 listview = (ListView) findViewById(R.id.word_list);
+		
+		 chkBx = (CheckBox)findViewById(R.id.checkBox_multiWords);
 		 cf = new CommomFunctions(this);
 		Intent intent = getIntent();
 		//strListName = intent.getStringExtra(MainActivity.LISTNAME);
@@ -133,6 +141,7 @@ public class MainList extends Activity {
 		else if (strListName.equalsIgnoreCase("ToughList")){
 			strQuery = "select * from mainwordlist where _id in (select mainid from Mapping where GroupID =3)";
 		}
+		cf.cfListView = listview;
 		
 		wp = new WordPowerOpenHelper(this, cf.DBName, null, 1);
 		
@@ -144,6 +153,23 @@ public class MainList extends Activity {
 		//listview.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 		listview.setAdapter(wordAdapter);
 		listview.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+		
+		//initialize all the check box status as false
+				
+		 
+
+//		CheckBox box = (CheckBox)findViewById(R.id.checkBox_multiWords);
+//		
+//		chkBx.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//			
+//			@Override
+//			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//				// TODO Auto-generated method stub
+//				if(isChecked){
+//					Log.i("com.example.wordtry.checkPoint","2905_1018");
+//				}
+//			}
+//		});
 		
 		listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			//
@@ -200,6 +226,8 @@ public class MainList extends Activity {
 		
 	}
 
+
+	
 	@Override
 	protected void onResume(){
 		super.onResume();
@@ -224,6 +252,8 @@ public class MainList extends Activity {
 		}
 			
 	}   
+	
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu){
@@ -235,9 +265,40 @@ public class MainList extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    // Handle item selection
+		ArrayList ar = new ArrayList();
 	    switch (item.getItemId()) {
 	        case R.id.select_words:
-	        	//Toast.makeText(this, "Select multiple words ",0).show();
+	        	CheckBox cb;
+	            ListView mainListView = listview;
+	            Log.i("x<mainListView.getChildCount()",String.valueOf(mainListView.getChildCount()));
+	            for (int x = 0; x<mainListView.getChildCount();x++){
+	                cb = (CheckBox)mainListView.getChildAt(x).findViewById(R.id.checkBox_multiWords);
+	                if(cb.isChecked()){
+	                	Log.i("CheckBoxxxxxxx","Checked");	                	
+	                	TableLayout tl = (TableLayout)mainListView.getChildAt(x);;
+//	    				int x = temp.getChildCount();
+//	    				Log.i("com.example.wordtry.ChildCount",String.valueOf(x));
+	    				TableRow tr1 = (TableRow) tl.getChildAt(x);
+	    				Log.i("com.example.wordtry.RowChildCount",String.valueOf(tr1.getChildCount()));
+	    				TextView tvp = (TextView)tr1.getChildAt(x);
+	    				Log.i("com.example.wordtry.CheckPoint","2606_1254");
+	    				//TableRow tvp = (TableRow)temp.getChildAt(0);
+	    				//tvp.get
+	    				String strClickedWord = tvp.getText().toString();
+	    				Log.i("com.example.wordtry",strClickedWord);
+	    				Cursor csr = wp.getAllWords("Select * from mainwordlist where Word = '"+ strClickedWord+"'");
+	    				Log.i("com.example.wordtry","Cursor returned");
+	    				if (csr.moveToFirst()){
+	    					int intID= csr.getInt(0);
+	    					Log.i("com.example.wordtry Words", csr.getString(1));
+	    					cf.addWordsToList(this, 1, intID);
+	    				}
+	    				csr.close();
+	    				wp.close();
+	                }
+	                break;
+	            }
+	            
 	            return true;
 		default:
 	            return super.onOptionsItemSelected(item);

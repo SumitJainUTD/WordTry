@@ -9,79 +9,40 @@ import android.support.v4.widget.CursorAdapter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
-public class WordAdapter extends CursorAdapter {
+public class WordAdapter extends CursorAdapter implements OnClickListener {
+	
+	public Context cxt;
+	public ArrayList<Boolean> itemChecked = new ArrayList<Boolean>();
+	public CommomFunctions cf;
+	public Boolean blnFirstTimeChecked = false;
+	public MainList ml;
+	public ListView listV;
 	
 	CheckBox [] ch = new CheckBox[100];
 	int i =0;
 	public WordAdapter(Context context, Cursor c) {
 		super(context, c);
-		 for(i=0;i<100;i++)
-				ch[i]=new CheckBox(context, null, i);
-		 i=0;
+		 cxt = context;
 		// TODO Auto-generated constructor stub
-	}
+		 for(int i=0;i<c.getCount();i++){
+				itemChecked.add(i,false);
+			}
+		 Log.i("29052014", String.valueOf(c.getCount()));
+		 cf = new CommomFunctions();
+		 ml = new MainList();
+		 listV = MainList.listview;
 
-	//public WordAdapter(Context context,Cursor csr){
-		
-		/*wRecord.add(new WordRecord("Word1", "Meaning1", "Sentence1"));
-		wRecord.add(new WordRecord("Word2", "Meaning2", "Sentence2"));
-		wRecord.add(new WordRecord("Word3", "Meaning3", "Sentence3"));
-		wRecord.add(new WordRecord("Word4", "Meaning4", "Sentence4"));
-		wRecord.add(new WordRecord("Word5", "Meaning5", "Sentence5"));
-		wRecord.add(new WordRecord("Word1", "Meaning1", "Sentence1"));
-		wRecord.add(new WordRecord("Word2", "Meaning2", "Sentence2"));
-		wRecord.add(new WordRecord("Word3", "Meaning3", "Sentence3"));
-		wRecord.add(new WordRecord("Word4", "Meaning4", "Sentence4"));
-		wRecord.add(new WordRecord("Word5", "Meaning5", "Sentence5"));
-		wRecord.add(new WordRecord("Word1", "Meaning1", "Sentence1"));
-		wRecord.add(new WordRecord("Word2", "Meaning2", "Sentence2"));
-		wRecord.add(new WordRecord("Word3", "Meaning3", "Sentence3"));
-		wRecord.add(new WordRecord("Word4", "Meaning4", "Sentence4"));
-		wRecord.add(new WordRecord("Word5", "Meaning5", "Sentence5"));*/
-		//super(context,csr);
-	//}
-//	private ArrayList<WordRecord> wRecord = new ArrayList<WordRecord>();
-//	@Override
-//	public int getCount() {
-//		// TODO Auto-generated method stub
-//		return wRecord.size();
-//	}
-//
-//	@Override
-//	public Object getItem(int index) {
-//		// TODO Auto-generated method stub
-//		return getItem(index);
-//	}
-//
-//	@Override
-//	public long getItemId(int index) {
-//		// TODO Auto-generated method stub
-//		return index;
-//	}
-//
-//	@Override
-//	public View getView(int index, View view, ViewGroup parent) {
-//		// TODO Auto-generated method stub
-////		if (view==null){
-////			
-////		}
-////		
-////		WordRecord word = wRecord.get(index);
-////		
-////		TextView wordTV = (TextView) view.findViewById(R.id.word_view);
-////		wordTV.setText(word.getWord());
-////		
-////		TextView meaningTV = (TextView) view.findViewById(R.id.meaning_view);
-////		meaningTV.setText(word.getMeaning());
-////		
-//		return view;
-//	}
+	}
 
 	@Override
 	public void bindView(View view, Context context, Cursor cursor) {
@@ -93,30 +54,100 @@ public class WordAdapter extends CursorAdapter {
 		
 		TextView meaningTV = (TextView) view.findViewById(R.id.meaning_view);
 		meaningTV.setText(cursor.getString(cursor.getColumnIndex("meaning")));
-		//meaningTV.setText("Jain");
-		//cursor.close();
-	    i++;
-	   	Log.i("Sumittttttttttttttttttttttt", "i m hereeeeeeeeeeeeeeee");					
-//	    	LinearLayout l1 = (LinearLayout)  view.findViewById(R.id.my_activity_view);
-//	    	l1.addView(ch[i]);
-//	    	ch[i].setVisibility(View.VISIBLE);
-//	    	ch[i].setWidth(25);
-//	    	ch[i].setHeight(10);
-//	    	
-//	    	Log.i("Width", String.valueOf(ch[1].getWidth()));
-//	    	Log.i("Visible", String.valueOf(ch[1].getVisibility()));
-//	    	Log.i("height", String.valueOf(ch[1].getHeight()));
-	    
-	    TextView Counter = (TextView) view.findViewById(R.id.CBCounter_view);
-	    
-		Counter.setText(String.valueOf(cursor.getInt(0)));
+		
+		final int position = cursor.getPosition();
+		final CheckBox checkBx = (CheckBox)view.findViewById(R.id.checkBox_multiWords);
+		
+		checkBx.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				CheckBox cb = (CheckBox)v.findViewById(R.id.checkBox_multiWords);
+				blnFirstTimeChecked = true;
+				// TODO Auto-generated method stub
+				if (cb.isChecked()) {
+	                itemChecked.set(position, true);
+	                Log.i("29052014","i m checked at "+String.valueOf(position));
+	                // do some operations here
+	            } else if (!cb.isChecked()) {
+	                itemChecked.set(position, false);
+	                // do some operations here
+	            }
+				Log.i("290514 list view count ","YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");				
+
+			}
+		});
+		checkBx.setChecked(itemChecked.get(position));
+	    	
 	}
+	
+
+//	@Override
+//	public View getView(final int position, View convertView, ViewGroup parent){
+//		View view = null;
+//		if(convertView==null){
+//			LayoutInflater inflater = (LayoutInflater) cxt.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//			view = inflater.inflate(R.layout.rowlayout_wordlist_table, null);
+//			//viewHolder vH = new viewHolder();
+//			}
+//		
+//		return view;
+//	}
+
 
 	@Override
 	public View newView(Context context, Cursor cursor, ViewGroup parent) {
 		// TODO Auto-generated method stub
 		LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 		View view = inflater.inflate(R.layout.rowlayout_wordlist_table, parent,false);
+		//		checkBx.setOnCheckedChangeListener(new OnCheckedChangeListener() {		
+//			
+//			
+////			public void onClick(View v) {
+////				// TODO Auto-generated method stub
+////				
+////			}
+////			
+//			@Override
+//			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
+//				// TODO Auto-generated method stub
+//				if (checkBx.isChecked()) {
+//	                itemChecked.set(position, true);
+//	                Log.i("29052014","i m checked at "+String.valueOf(position));
+//	                // do some operations here
+//	            } else if (!checkBx.isChecked()) {
+//	                itemChecked.set(position, false);
+//	                // do some operations here
+//	            }
+//
+//			}
+//		});
+		//checkBx.setChecked(itemChecked.get(position));
+		
+//		if(blnFirstTimeChecked){
+//			ListView lv = (ListView)view.findViewById(R.id.word_list); 
+//			if(lv==null){
+//				Log.i("290514 list view count ","NULLLLLLLLLLLLLLLLLLLLLLLLLLLL");
+//			}
+//			Log.i("290514 list view count ","XXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+//			Log.i("290514 list view count ",String.valueOf(lv.getChildCount()));
+////			Log.i("290514 Boolean array size ",String.valueOf(itemChecked.size()));
+////			for (int x = 0; x<lv.getChildCount();x++){
+////	            CheckBox c = (CheckBox)lv.getChildAt(x).findViewById(R.id.checkBox_multiWords);
+////	            c.setChecked(itemChecked.get(position));
+////			}
+////	            
+//
+//		}
+//		
+		
+
 		return view;
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		
 	}
 }
