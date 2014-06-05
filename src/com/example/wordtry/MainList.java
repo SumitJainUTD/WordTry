@@ -1,6 +1,7 @@
 package com.example.wordtry;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -37,13 +38,14 @@ public class MainList extends Activity {
 	public static ListView listview;
 	public CheckBox chkBx;
 	public CommomFunctions cf;
+	public static ArrayList<String> listOfItems;
 	
 
 	
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.mainlist);
+		setContentView(R.layout.mainlist_withmenu);
 		
 		 listview = (ListView) findViewById(R.id.word_list);
 		
@@ -51,6 +53,7 @@ public class MainList extends Activity {
 		 cf = new CommomFunctions(this);
 		Intent intent = getIntent();
 		//strListName = intent.getStringExtra(MainActivity.LISTNAME);
+		listOfItems = new ArrayList<String>();
 		strListName = intent.getStringExtra(Select_Alphabet.LISTNAME);
 		Log.i("HELP", strListName);
 		if (strListName.equalsIgnoreCase("MasterWordList_A") ){
@@ -264,44 +267,52 @@ public class MainList extends Activity {
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    // Handle item selection
-		ArrayList ar = new ArrayList();
+	    // Handle item selection		
 	    switch (item.getItemId()) {
 	        case R.id.select_words:
-	        	CheckBox cb;
-	            ListView mainListView = listview;
-	            Log.i("x<mainListView.getChildCount()",String.valueOf(mainListView.getChildCount()));
-	            for (int x = 0; x<mainListView.getChildCount();x++){
-	                cb = (CheckBox)mainListView.getChildAt(x).findViewById(R.id.checkBox_multiWords);
-	                if(cb.isChecked()){
-	                	Log.i("CheckBoxxxxxxx","Checked");	                	
-	                	TableLayout tl = (TableLayout)mainListView.getChildAt(x);;
-//	    				int x = temp.getChildCount();
-//	    				Log.i("com.example.wordtry.ChildCount",String.valueOf(x));
-	    				TableRow tr1 = (TableRow) tl.getChildAt(x);
-	    				Log.i("com.example.wordtry.RowChildCount",String.valueOf(tr1.getChildCount()));
-	    				TextView tvp = (TextView)tr1.getChildAt(x);
-	    				Log.i("com.example.wordtry.CheckPoint","2606_1254");
-	    				//TableRow tvp = (TableRow)temp.getChildAt(0);
-	    				//tvp.get
-	    				String strClickedWord = tvp.getText().toString();
-	    				Log.i("com.example.wordtry",strClickedWord);
-	    				Cursor csr = wp.getAllWords("Select * from mainwordlist where Word = '"+ strClickedWord+"'");
-	    				Log.i("com.example.wordtry","Cursor returned");
-	    				if (csr.moveToFirst()){
-	    					int intID= csr.getInt(0);
-	    					Log.i("com.example.wordtry Words", csr.getString(1));
-	    					cf.addWordsToList(this, 1, intID);
-	    				}
+//	        	CheckBox cb;
+//	            ListView mainListView = listview;
+//	            Log.i("x<mainListView.getChildCount()",String.valueOf(mainListView.getChildCount()));
+//	            for (int x = 0; x<mainListView.getChildCount();x++){
+//	                cb = (CheckBox)mainListView.getChildAt(x).findViewById(R.id.checkBox_multiWords);
+//	                //if(cb.isChecked()){
+//	                Log.i("CheckBoxxxxxxx","Checked");	                	
+//                	TableLayout tl = (TableLayout)mainListView.getChildAt(x);;
+////    				int x = temp.getChildCount();
+////    				Log.i("com.example.wordtry.ChildCount",String.valueOf(x));
+//    				TableRow tr1 = (TableRow) tl.getChildAt(x);
+//    				Log.i("com.example.wordtry.RowChildCount",String.valueOf(tr1.getChildCount()));
+//    				TextView tvp = (TextView)tr1.getChildAt(x);
+//    				Log.i("com.example.wordtry.CheckPoint","2606_1254");
+//    				//TableRow tvp = (TableRow)temp.getChildAt(0);
+//    				//tvp.get
+//    				String strClickedWord = tvp.getText().toString();
+//    				Log.i("com.example.wordtry",strClickedWord);
+//        	
+	        Iterator iterator = (Iterator) listOfItems.iterator();
+	          while (iterator.hasNext()) {
+                String strClickedWord = (String) iterator.next();
+                Log.i("com.example.wordtry",strClickedWord);
+	          	
+				Cursor csr = wp.getAllWords("Select * from mainwordlist where Word = '"+ strClickedWord+"'");
+				Log.i("com.example.wordtry","Cursor returned");
+	                	
+    				if (csr.moveToFirst()){
+    					int intID= csr.getInt(0);
+    					Log.i("com.example.wordtry Words", csr.getString(1));
+    					cf.addWordsToList(this, 1, intID);
+    				}
 	    				csr.close();
 	    				wp.close();
-	                }
-	                break;
-	            }
-	            
+	              //}
+	    
+	                //break;
+	    }
+	            listOfItems.clear();
 	            return true;
 		default:
 	            return super.onOptionsItemSelected(item);
+	            
 	    }
 	}
 }

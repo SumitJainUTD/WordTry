@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -23,6 +25,7 @@ public class WordAdapter extends CursorAdapter implements OnClickListener {
 	
 	public Context cxt;
 	public ArrayList<Boolean> itemChecked = new ArrayList<Boolean>();
+	
 	public CommomFunctions cf;
 	public Boolean blnFirstTimeChecked = false;
 	public MainList ml;
@@ -48,10 +51,8 @@ public class WordAdapter extends CursorAdapter implements OnClickListener {
 	public void bindView(View view, Context context, Cursor cursor) {
 		// TODO Auto-generated method stub
 		TextView wordTV = (TextView) view.findViewById(R.id.word_view);
-		//Log.i("Word index", cursor.getColumnIndex("Word"));
 		wordTV.setText(cursor.getString(cursor.getColumnIndex("Word")));
-		//wordTV.setText("Sumit");
-		
+
 		TextView meaningTV = (TextView) view.findViewById(R.id.meaning_view);
 		meaningTV.setText(cursor.getString(cursor.getColumnIndex("meaning")));
 		
@@ -63,22 +64,35 @@ public class WordAdapter extends CursorAdapter implements OnClickListener {
 			@Override
 			public void onClick(View v) {
 				CheckBox cb = (CheckBox)v.findViewById(R.id.checkBox_multiWords);
-				blnFirstTimeChecked = true;
+				
+					TableLayout temp = (TableLayout)v.getParent().getParent();
+					int x = temp.getChildCount();
+					Log.i("com.example.wordtry.ChildCount",String.valueOf(x));
+					TableRow tr = (TableRow) temp.getChildAt(0);
+					Log.i("com.example.wordtry.RowChildCount",String.valueOf(tr.getChildCount()));
+					TextView tvp = (TextView)tr.getChildAt(0);
+					Log.i("com.example.wordtry.CheckPoint","2606_1254");
+					//TableRow tvp = (TableRow)temp.getChildAt(0);
+					//tvp.get
+					String strClickedWord = tvp.getText().toString();
+					Log.i("CLICKED ON THE WORD ",strClickedWord);
 				// TODO Auto-generated method stub
 				if (cb.isChecked()) {
 	                itemChecked.set(position, true);
+	                MainList.listOfItems.add(strClickedWord);
 	                Log.i("29052014","i m checked at "+String.valueOf(position));
 	                // do some operations here
 	            } else if (!cb.isChecked()) {
 	                itemChecked.set(position, false);
+	                MainList.listOfItems.remove(strClickedWord);
 	                // do some operations here
 	            }
-				Log.i("290514 list view count ","YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");				
-
+				Log.i("290514 list view count ","YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
+				
+				
 			}
 		});
 		checkBx.setChecked(itemChecked.get(position));
-	    	
 	}
 	
 
@@ -140,8 +154,6 @@ public class WordAdapter extends CursorAdapter implements OnClickListener {
 //
 //		}
 //		
-		
-
 		return view;
 	}
 
