@@ -13,19 +13,35 @@
 	    android:padding="5dp"
 	    android:layout_gravity="center_horizontal"
 	    android:layout_weight="0" >
-	    <Button android:text="Previous"
-	        android:onClick="PreviousWord"
+	    
+        <ImageView 
+        android:id="@+id/img_effect" 
+        android:layout_width="0dp" 
+        android:layout_height="match_parent"
+        android:layout_weight="20"
+        android:onClick="diplayHomePage"
+	    
+        android:src="@drawable/home" />
+        <TextView
+           android:id="@+id/QueNoText"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text=""
+          android:textColor="#FFFFFF"
+          android:textStyle="bold"
+          android:layout_weight="60"
+          android:layout_marginLeft="3sp"
+           android:textSize="25sp" />
+        
+        <Button android:text="Clear All"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_weight="1"
-	        android:layout_gravity="center" />
-	    <Button android:text="Next"
-	        android:onClick="NextWord"
-	        android:layout_width="wrap_content"	        
-	        android:layout_weight="1"
-	        android:layout_height="wrap_content"
-	        android:layout_gravity="center" />
+	        android:layout_gravity="center"
+	        android:onClick="clearAll"
+	        android:layout_weight="20"/>
+	    
 	</LinearLayout>
+	        
     
     <ListView
         android:id="@+id/word_list"
@@ -47,46 +63,24 @@
 	    android:padding="5dp"
 	    android:layout_gravity="center_horizontal"
 	    android:layout_weight="0" >
-	    <Button android:text="Add To List"
-	        android:onClick="displayListMenuAdd"
+        
+	    <Button android:text="Add To MyList"
+	        android:onClick="addToMyListBulk"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_gravity="center"
 	        android:layout_weight="1"
-	        android:id = "@+id/AddToList" />
-	    <Button android:text="Remove From List"
-	        android:onClick="displayListMenuRemove"
+	        android:id = "@+id/AddToMyList_ListView" />
+	    
+	    <Button android:text="Add To LearningList"
+	        android:onClick="addToLearningListBulk"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_gravity="center"
 	         android:layout_weight="1"
-	        android:id = "@+id/RemoveFromList"
+	        android:id = "@+id/AddToLearningList_Listview"
 	        />
 	    
 	</LinearLayout>
 	
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-	
-    
-
 </LinearLayout>

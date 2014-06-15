@@ -13,18 +13,25 @@
 	    android:padding="5dp"
 	    android:layout_gravity="center_horizontal"
 	    android:layout_weight="0" >
+	    <ImageView 
+        android:id="@+id/img_effect" 
+        android:layout_width="0dp" 
+        android:layout_height="match_parent"
+        android:layout_weight="25"
+        android:onClick="diplayHomePage"
+        android:src="@drawable/home" />
 	    <Button android:text="Previous"
 	        android:onClick="displayPreviousWord"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_weight="1"
+	        android:layout_weight="37"
 	        android:layout_gravity="center" />
 	    <Button android:text="Next"
 	        android:onClick="displayNextWord"
 	        android:layout_width="wrap_content"
 	       
 	        android:layout_height="wrap_content"
-	        android:layout_weight="1"
+	        android:layout_weight="37"
 	        android:layout_gravity="center" />
 	  
 	    

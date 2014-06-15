@@ -2,14 +2,22 @@ package com.example.wordtry;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
+import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ListView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class CommomFunctions extends MainActivity {
@@ -47,12 +55,40 @@ public class CommomFunctions extends MainActivity {
 		}
 		else{
 			wp.addWordToList(intWordID, intListNo);
-			ShowToast(cxt, "The Word is added to"+ strList, 0);
+			ShowToast(cxt, "The Word is added to "+ strList, 0);
 		}
 		
 		//Toast.makeText(this, "The word is added",0).show();
 		
 	}
+	
+	public void addWordsToListBulk(Context cxt, int intListNo, int intWordID){
+		Log.i("Common Functions", "Add word to list");
+		switch(intListNo){
+		case 1:
+			strList = "My List";
+			break;
+		case 2:
+			strList = "Learning List";
+			break;
+		case 3:
+			strList = "Tough List";
+			break;
+		}			
+		final WordPowerOpenHelper wp = new WordPowerOpenHelper(cxt, DBName, null, 1);
+		Log.i("Common Functions", "DB connection is open and values are " + intListNo + " and Word id is " + intWordID);
+		if(blnWordAlreadyExist(intWordID,intListNo,wp)){
+			//ShowToast(cxt, "Already Added", 0);
+		}
+		else{
+			wp.addWordToList(intWordID, intListNo);
+			//ShowToast(cxt, "The Word is added to"+ strList, 0);
+		}
+		
+		//Toast.makeText(this, "The word is added",0).show();
+		
+	}
+	
 	
 	public boolean blnWordAlreadyExist(int intWORDID, int intGrpId,WordPowerOpenHelper wp ){
 		String strQuery = "Select Count(*) as Count from (select * from mainwordlist where _ID in (select mainid from Mapping where GroupID ="+ intGrpId +")) where _ID = "+ intWORDID;
@@ -76,8 +112,12 @@ public class CommomFunctions extends MainActivity {
 		}
 		final WordPowerOpenHelper wp = new WordPowerOpenHelper(cxt, DBName, null, 1);
 		wp.deleteWordFromList(intWordID, intListNo);
-		//Toast.makeText(this, "The word is removed from the "+ strList,0).show();
+		//Toast.makeText(this, "Deleted",0).show();
 		this.finish();		
+	}
+	public void goHome(ContextWrapper cxt){
+		Intent mainIntent = new Intent(cxt, MainActivity.class);
+	    startActivity(mainIntent);
 	}
 	
 	
@@ -242,7 +282,61 @@ public class CommomFunctions extends MainActivity {
 		}
 		
 		//Toast.makeText(this, "The word is added",0).show();
+	
+	public void clearAllCheckBoxes(View v){
+		ListView mainListView = (ListView)v.findViewById(R.id.word_list);	
+		
+		
+		if(mainListView==null){
+			Log.i("006062014 99999999999", "NULLLLLLLLLLLLLLL");
+		}
+		CheckBox cb;    
+		Log.i("006062014 99999999999", String.valueOf(mainListView.getAdapter().getCount()));
+		for (int x = 0; x<mainListView.getAdapter().getCount();x++){
+       	 //ViewGroup item = (ViewGroup)mainListView.getChildAt(x);
+			TableLayout tL = (TableLayout)mainListView.getAdapter().getView(x, null, mainListView);//.findViewById(R.id.word_list);
+			
+			if(tL==null){
+				Log.i("006062014 999988888888888888999", "NULLLLLLLLLLLLLLL");
+			}
+			
+				//Log.i("TableLayout Count", String.valueOf(tL.getChildCount()));
+			TableRow tR= (TableRow) tL.getChildAt(0);
+			//Log.i("Table First Row Count", String.valueOf(tR.getChildCount()));
+			TextView tvp = (TextView)tR.getChildAt(0);
+			//Log.i("Text View Data", (String) tvp.getText());
+			cb = (CheckBox) tR.getChildAt(1);
+			//Log.i("CheckBox ID", String.valueOf(cb.getId()));
+			//Log.i("Before CheckBox status", String.valueOf(cb.isChecked()));
+			//TextView tvp1 = (TextView)tR.getChildAt(1);
+			//Log.i("Checking this Text View Data", (String) tvp1.getText());
+			
+
+			//cb = (CheckBox) lv.findViewById(R.id.checkBox_multiWords);
+			//cb = (CheckBox) mainListView.getChildAt(x).findViewById(R.id.checkBox_multiWords);
+//       	cb = (CheckBox)item.findViewById(R.id.checkBox_multiWords);
+			cb.setChecked(false);
+			cb.refreshDrawableState();
+			tR.refreshDrawableState();
+			tL.refreshDrawableState();
+			
+			
+			//Log.i("After CheckBox status", String.valueOf(cb.isChecked()));
+//       	cb.refreshDrawableState();
+       }
+	
+        Log.i("x<mainListView.getChildCount()",String.valueOf(mainListView.getChildCount()));
+//        for (int x = 0; x<mainListView.getChildCount();x++){
+//        	 ViewGroup item = (ViewGroup)mainListView.getChildAt(x);findViewById(R.id.checkBox_multiWords);
+//        	cb = (CheckBox)item.findViewById(R.id.checkBox_multiWords);
+//        	cb.setChecked(false);
+//        	cb.refreshDrawableState();
+//        }
 		
 	}
+		
+}
+
+	
 
 

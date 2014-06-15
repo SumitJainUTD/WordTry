@@ -129,6 +129,11 @@ public class WordDetails extends MainActivity {
 		}
 		
 	}
+		public void diplayHomePage(View v){
+			//cf.goHome(getApplicationContext());
+			Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+		    startActivity(mainIntent);
+		}
 		
 		public String[] getWordDetails(int intWordID){
 			String[] arrWordDetails = new String[3];
@@ -182,6 +187,14 @@ public class WordDetails extends MainActivity {
 					intCurrentWordPosition++;					
 				}
 				else{
+					//this block of code is to check whether this function is getting called from revomewpords,, if yes then dont go in loop, exit and how the home page in case of list is empty
+					if(getRecordCount("select Count(*) as Count from mainwordlist where _ID in (select mainid from Mapping where GroupID ="+ intGRPId +")")==0){
+						cf.ShowToast(this, "List is Empty", 0);
+						Log.i("List id empty", "List id empty");
+						//cf.goHome(getApplicationContext());
+						Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+					    startActivity(mainIntent);
+					}
 					intCurrentWordPosition = 0;
 				}
 				Log.i("incremented ... new position is ", String.valueOf(intCurrentWordPosition));
@@ -260,7 +273,7 @@ public class WordDetails extends MainActivity {
 	public void displayListMenuAdd(View v){
 		Log.i("Add button is clicked",strList);
 		if(strList.equalsIgnoreCase("My List")||strList.equalsIgnoreCase("Learning List")){
-			if(strList.equalsIgnoreCase("MyList")){
+			if(strList.equalsIgnoreCase("My List")){
 				cf.addWordsToList(this,2,intWordID);
 			}
 			else{
@@ -278,15 +291,15 @@ public class WordDetails extends MainActivity {
 		//OPERATION = "REMOVE";
 		if (strList.equalsIgnoreCase("My list")){
 			cf.removeWordsFromList(this,1,intWordID);
-			onBackPressed();
+			NextWord(v);
 		}
 		else if (strList.equalsIgnoreCase("Learning list")){
 			cf.removeWordsFromList(this,2,intWordID);
-			onBackPressed();
+			NextWord(v);
 		}
 		else if (strList.equalsIgnoreCase("Tough list")){
 			cf.removeWordsFromList(this,3,intWordID);
-			onBackPressed();
+			NextWord(v);
 		}
 	}
 	

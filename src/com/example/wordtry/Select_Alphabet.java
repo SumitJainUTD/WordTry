@@ -20,7 +20,7 @@ public class Select_Alphabet extends MainActivity {
 	@Override
 	public void onBackPressed() {
 
-	    Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+	    Intent mainIntent = new Intent (getApplicationContext(), MainActivity.class);
 	    startActivity(mainIntent);
 	    Log.i("Back pressed","Refresh it");
 	    return;

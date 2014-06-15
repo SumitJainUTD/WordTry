@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.R.string;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v4.widget.CursorAdapter;
 import android.util.Log;
@@ -30,6 +31,8 @@ public class WordAdapter extends CursorAdapter implements OnClickListener {
 	public Boolean blnFirstTimeChecked = false;
 	public MainList ml;
 	public ListView listV;
+	public boolean blnAllWordsDeleted = false;
+	public int noOfCheckBoxesDisplayed;
 	
 	CheckBox [] ch = new CheckBox[100];
 	int i =0;
@@ -37,6 +40,7 @@ public class WordAdapter extends CursorAdapter implements OnClickListener {
 		super(context, c);
 		 cxt = context;
 		// TODO Auto-generated constructor stub
+		 noOfCheckBoxesDisplayed = c.getCount();
 		 for(int i=0;i<c.getCount();i++){
 				itemChecked.add(i,false);
 			}
@@ -58,6 +62,8 @@ public class WordAdapter extends CursorAdapter implements OnClickListener {
 		
 		final int position = cursor.getPosition();
 		final CheckBox checkBx = (CheckBox)view.findViewById(R.id.checkBox_multiWords);
+		
+		
 		
 		checkBx.setOnClickListener(new OnClickListener() {
 			
@@ -93,6 +99,7 @@ public class WordAdapter extends CursorAdapter implements OnClickListener {
 			}
 		});
 		checkBx.setChecked(itemChecked.get(position));
+		
 	}
 	
 
@@ -107,6 +114,8 @@ public class WordAdapter extends CursorAdapter implements OnClickListener {
 //		
 //		return view;
 //	}
+	
+	
 
 
 	@Override
@@ -156,6 +165,8 @@ public class WordAdapter extends CursorAdapter implements OnClickListener {
 //		
 		return view;
 	}
+	
+	
 
 	@Override
 	public void onClick(View v) {

@@ -206,6 +206,12 @@ public class Exam extends MainActivity{
 		intCurrentQuestionScore=1;
 	}
 	
+	public void diplayHomePage(View v){
+		//cf.goHome(getApplicationContext());
+		Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+	    startActivity(mainIntent);
+	}
+	
 	public void displayNext(){
 		
 		if(strList.equalsIgnoreCase("Main List")){			

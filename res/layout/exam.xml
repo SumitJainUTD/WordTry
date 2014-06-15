@@ -15,6 +15,14 @@
 	    android:layout_gravity="center_horizontal"
 	    android:layout_weight="0" >
 	    
+         <ImageView 
+        android:id="@+id/img_effect" 
+        android:layout_width="0dp" 
+        android:layout_height="match_parent"
+        android:layout_weight="15"
+        android:onClick="diplayHomePage"
+        android:src="@drawable/home" />
+	    
         <TextView
            android:id="@+id/QueNoText"
            android:layout_width="wrap_content"
@@ -22,6 +30,8 @@
            android:text="Question No: "
           android:textColor="#FFFFFF"
           android:textStyle="bold"
+          android:layout_weight="20"
+          android:layout_marginLeft="3sp"
            android:textSize="14sp" />
         
         <TextView
@@ -30,7 +40,7 @@
            android:layout_height="wrap_content"
            android:text="2500/4000"
            android:textColor="#FFFFFF"
-            android:layout_weight="1"
+            android:layout_weight="20"
             android:textStyle="bold"
            android:textSize="14sp" />
 	   <TextView
@@ -40,6 +50,7 @@
           android:textColor="#FFFFFF"
           android:textStyle="bold"
            android:text="Score: "
+           android:layout_weight="20"
            android:textSize="14sp" />
 	   
 	   <TextView
@@ -50,7 +61,7 @@
            android:text="6000/6000"
            android:textColor="#FFFFFF"
            android:textStyle="bold"
-           android:layout_weight="1"
+           android:layout_weight="25"
            android:textSize="14sp" />
 	    
 	</LinearLayout>

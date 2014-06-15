@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -137,9 +138,13 @@ public class MainList extends Activity {
 			strQuery ="Select * from mainwordlist where Word LIKE  'z%'";
 		}else if (strListName.equalsIgnoreCase("MyList")){
 			strQuery = "select * from mainwordlist where _id in (select mainid from Mapping where GroupID =1)";
+			(findViewById(R.id.AddToMyList_ListView)).setVisibility(View.INVISIBLE);			
+			(findViewById(R.id.AddToLearningList_Listview)).setVisibility(View.VISIBLE);
 		}
 		else if (strListName.equalsIgnoreCase("LearningList")){
 			strQuery = "select * from mainwordlist where _id in (select mainid from Mapping where GroupID =2)";
+			(findViewById(R.id.AddToMyList_ListView)).setVisibility(View.VISIBLE);			
+			(findViewById(R.id.AddToLearningList_Listview)).setVisibility(View.INVISIBLE);
 		}
 		else if (strListName.equalsIgnoreCase("ToughList")){
 			strQuery = "select * from mainwordlist where _id in (select mainid from Mapping where GroupID =3)";
@@ -153,9 +158,11 @@ public class MainList extends Activity {
 		Log.i("com.example.wordtry","Cursor returned");
 //		
 		wordAdapter = new WordAdapter(this,csr);
+		
 		//listview.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 		listview.setAdapter(wordAdapter);
 		listview.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+		//listview.getAdapter().
 		
 		//initialize all the check box status as false
 				
@@ -238,6 +245,98 @@ public class MainList extends Activity {
 		wordAdapter = new WordAdapter(this,csr);
 		listview.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 		listview.setAdapter(wordAdapter);
+	}
+	
+	public void diplayHomePage(View v){
+		//cf.goHome(getApplicationContext());
+		Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+	    startActivity(mainIntent);
+	}
+	
+	public void addToLearningListBulk(View v){
+		int addedWordsCount=0;
+		Iterator iterator = (Iterator) listOfItems.iterator();
+        while (iterator.hasNext()) {
+          String strClickedWord = (String) iterator.next();
+          Log.i("com.example.wordtry",strClickedWord);
+        	
+			Cursor csr = wp.getAllWords("Select * from mainwordlist where Word = '"+ strClickedWord+"'");
+			Log.i("com.example.wordtry","Cursor returned");
+              	
+				if (csr.moveToFirst()){
+					int intID= csr.getInt(0);
+					Log.i("com.example.wordtry Words", csr.getString(1));
+					cf.addWordsToListBulk(this, 2, intID);
+					addedWordsCount++;
+				}
+  				csr.close();
+  				wp.close();
+  				
+  }
+          listOfItems.clear();
+          if(addedWordsCount==0){
+        	  cf.ShowToast(this, "Please select words", 0);
+          }
+          else if(addedWordsCount>1){
+        	  cf.ShowToast(this, String.valueOf(addedWordsCount) + " words are added to Learning List", 0);
+          }
+          else{
+        	  cf.ShowToast(this, String.valueOf(addedWordsCount) + " word is added to Learning List", 0);
+          }
+          
+          	cf.clearAllCheckBoxes(v.getRootView());
+          	listOfItems.clear();
+  			//finish();
+  			//startActivity(getIntent());
+          
+
+	}
+	public void addToMyListBulk(View v){
+		int addedWordsCount=0;
+		Iterator iterator = (Iterator) listOfItems.iterator();
+        while (iterator.hasNext()) {
+          String strClickedWord = (String) iterator.next();
+          Log.i("com.example.wordtry",strClickedWord);
+        	
+			Cursor csr = wp.getAllWords("Select * from mainwordlist where Word = '"+ strClickedWord+"'");
+			Log.i("com.example.wordtry","Cursor returned");
+              	
+				if (csr.moveToFirst()){
+					int intID= csr.getInt(0);
+					Log.i("com.example.wordtry Words", csr.getString(1));
+					cf.addWordsToListBulk(this, 1, intID);
+					addedWordsCount++;
+				}
+  				csr.close();
+  				wp.close();
+  				
+  }
+          listOfItems.clear();
+          if(addedWordsCount==0){
+        	  cf.ShowToast(this, "Please select words", 0);
+          }
+          else if(addedWordsCount>1){
+        	  cf.ShowToast(this, String.valueOf(addedWordsCount) + " words are added to My List", 0);
+          }
+          else{
+        	  cf.ShowToast(this, String.valueOf(addedWordsCount) + " word is added to My List", 0);
+          }
+          
+          	cf.clearAllCheckBoxes(v.getRootView());
+          	listOfItems.clear();
+  			//finish();
+  			//startActivity(getIntent());
+          
+	}
+	
+	public void clearAll(View v){
+		cf.clearAllCheckBoxes(v.getRootView());
+		listOfItems.clear();
+		wordAdapter.notifyDataSetChanged();
+		listview.setAdapter(wordAdapter);
+		//finish();
+		//startActivity(getIntent());
+		//ListView list = L
 	}
 	
 	public void onBackPressed() {

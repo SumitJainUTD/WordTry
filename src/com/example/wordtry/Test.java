@@ -131,7 +131,11 @@ public class Test extends MainActivity {
 		stv.setText(arrWordDetails[2]);
 	}
 	
-	
+	public void diplayHomePage(View v){
+		//cf.goHome(getApplicationContext());
+		Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+	    startActivity(mainIntent);
+	}
 	
 	public int getRecordCount(String strQuery){
 		
